@@ -1,0 +1,185 @@
+<html>
+<head>
+<title>form validation</title>
+<style>
+#table
+{ 
+  margin-left:40px;
+  border-bottom:50px;
+  padding-bottom:55px;
+}
+input
+{
+	border:2px solid black;
+	height:40px;
+	width:180px;
+	border-radius:3px;
+}
+textarea
+{
+	border:2px solid black;
+	height:130px;
+	width:180px;
+	border-radius:3px;
+}
+#bdy
+{
+	background-size:cover;
+	background-image:url("pic.jpg");
+}
+</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	
+	$(document).ready(function(){
+		$('#fname').focus(function(){
+			$(this).val('')
+		});
+		$('#phone').focus(function(){
+			$(this).val('')
+		});
+		$('textarea').focus(function(){
+			$(this).val('');
+		});
+		$('#email').focus(function(){
+			$(this).val('');
+		});
+		$('#button').click(function(e){
+			e.preventDefault();{
+	    var fn=$('input[name=fname]').val();
+		var ph=$('input[name=phone]').val();
+		var add=$('textarea[name=address]').val();
+		var em=$('input[name=email]').val();
+        if(fn.length<1 && ph.length<1 && add.length<1 && em.length<1)
+              alert("fields cannot be empty");
+        	
+        else if($('input[name=fname]').val()=='' || /[^a-zA-Z]/.test($('input[name=fname]').val()))
+               alert("Please fill the name field correctly");
+
+        else if(ph.length<1)
+             alert("Please fill the phone field");
+        
+        else if(add.length<1)
+              alert("Please fill the address field");
+         else if(em.length<1)
+         	   alert("please enter your email id");
+        }
+	});
+		$('#fname').blur(function(){
+		  if($('input[name=fname]').val()=='' || /[^a-zA-Z]/.test($('input[name=fname]').val()))
+			   $("#fname").css('border','3px solid red');
+		  else
+		  	 {
+		  	 	var fn=$('input[name=fname]').val();
+		  	 	alert("name is "+fn);
+		  	 	$("#fname").css('border','3px solid green');
+
+		  	 }
+    });
+		$('#phone').blur(function(){
+           var ph=$('input[name=phone]').val();
+	       var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+            if($('input[name=phone]').val()=='')
+                  $("#phone").css('border','3px solid red');
+            else if(!ph.match(phoneno))
+	            $("#phone").css('border','3px solid red');
+			 else
+		  	 {
+		  	 	var ph=$('input[name=phone]').val();
+		  	 	alert("phone no: is "+ph);
+		  	 	$("#phone").css('border','3px solid green');
+
+		  	 }
+	});
+		$('#address').blur(function(){
+			if($('textarea[name=address]').val()=='')
+				 $("#address").css('border','3px solid red');
+			else
+		  	 {
+		  	 	$("#address").css('border','3px solid green');
+			}
+	
+	});
+		$('#email').keypress(function(){
+			var em=$('input[name=email]').val();
+			var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+	        if (filter.test(em)) 
+	        	 $("#email").css('border','3px solid green');
+            else
+            	$("#email").css('border','3px solid red');
+	});
+});
+	</script>
+</head>
+<body id="bdy">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-0 col-sm-3">
+			</div>
+			<div class="col-xs-12 col-sm-6">
+			  <h3 style="margin-left:98px;font-family:Impact; font-size:30px;"><u>REGISTRATION FORM</u></h3><br><br>
+			</div>
+			<div class="col-xs-0 col-sm-3">
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-0 col-sm-3">
+			</div>
+			<div class="col-xs-12 col-sm-6">
+				<form name="register" action="#" method="post" id="frm">
+			   	<table border="0" id="table">
+			  	<tr>
+			  		<td>
+			  			<label>NAME:</label>
+			  		</td>
+			  	    <td>
+			  		<input type="text" name="fname" id="fname" style="margin-left:10px;">
+			  	    </td>
+			  	</tr>
+			  	<tr><td> <br><br>  </td><td> <br> </td></tr>
+			  	<tr>
+			  		<td>
+			  			<label>PH NO:</label>
+			  		</td>
+			  	   <td>
+			  	   	<input type="text" name="phone" id="phone" style="margin-left:10px;">
+			  	   </td>
+			  	</tr>
+			  	<tr><td> <br><br> </td><td> <br> </td></tr>
+			    <tr>
+			    	<td>
+			    		<label>ADDRESS:</label>
+			    	</td>
+			  	    <td>
+			  	    	<textarea name="address" id="address" rows="5" cols="28" style="margin-left:10px;"></textarea>
+			  	    </td>
+			  	</tr>
+			  	<tr><td> <br> </td><td></td></tr>
+			  	<tr><td><label>EMAIL ID:</label></td>
+			  		<td><input type="email" name="email" id="email" style="margin-left:10px;"></td></tr>
+			  	<tr><td> <br> </td><td> <br></td></tr>
+			  	<tr>
+			        <td>
+			        	<input type="submit" id="button" value="SUBMIT" style="background-color:#00b300;display:inline-block;border:1px solid white;height:50px;width:120px;text-align:center;border-radius:5px;color:white;margin-top:30px">
+			        </td>
+			        <td>
+			        	<input type="reset" id="button" value="CLEAR" style="background-color:#00b300;display:inline-block;border:1px solid white;height:50px;width:120px;text-align:center;border-radius:5px;color:white;margin-left:40px;margin-top:30px;">
+			        </td>
+			    </tr>
+			    <tr><td><br></td><td></td></tr>
+			    </table>
+			</form>
+		
+           </div>
+			<div class="col-xs-0 col-sm-3">
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+
+	

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jquery</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+  	$("#hide").hover(function(){
+  		$("#para").hide();
+  	});
+  	$("#show").click(function(){
+  		$("#para").show();
+  	});
+  	$("#up").mouseup(function(){
+          alert("you moved up!");
+      });
+     $("input").focus(function(){
+     	$(this).css("background-color","green");
+     });
+     $("input").blur(function(){
+     	$(this).css("background-color","white");
+     });
+     $("#magic").click(function(){
+     	$("box1").fadeOut();
+     	$("box2").fadeOut("fast");
+     	$("box3").fadeOut("slow");
+     	$("box4").fadeOut("7000");
+    
+
+     });
+  });	
+</script>
+</head>
+<body>
+
+<p id="para">Engineering has existed since ancient times, when humans devised inventions such as the wedge, lever, wheel and pulley.
+
+The term engineering is derived from the word engineer, which itself dates back to 1390 when an engine'er (literally, one who operates an engine) referred to "a constructor of military engines."[5] In this context, now obsolete, an "engine" referred to a military machine, i.e., a mechanical contraption used in war (for example, a catapult). Notable examples of the obsolete usage which have survived to the present day are military engineering corps, e.g., the U.S. Army Corps of Engineers.
+
+The word "engine" itself is of even older origin, ultimately deriving from the Latin ingenium (c. 1250), meaning "innate quality, especially mental power, hence a clever invention."[6]
+
+Later, as the design of civilian structures, such as bridges and buildings, matured as a technical discipline, the term civil engineering[4] entered the lexicon as a way to distinguish between those specializing in the construction of such non-military projects and those involved in the discipline of military engineering.</p><br><br>
+<form>
+	<label>email:</label>
+	<input type="text" size="40" name="fname"><br><br>
+	<label>password:</label>
+	<input type="password" size="40" name="pass"><br><br>
+<button id="hide">Hide</button>
+<button id="show">Show</button>
+<p id="up">move mouse up</p><br><br>
+<button id="magic">CLick me for magic</button><br><br>
+<div id="box1" style="background-color:yellow;width:80px;height:80px;border:1px solid white;"></div>
+<div id="box2" style="background-color:black;width:80px;height:80px;border:1px solid white;"></div>
+<div id="box3" style="background-color:red;width:80px;height:80px;border:1px solid white;"></div>
+<div id="box4" style="background-color:blue;width:80px;height:80px;border:1px solid white;"></div>
+</body>
+</html>

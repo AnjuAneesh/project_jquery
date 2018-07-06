@@ -1,0 +1,89 @@
+<html>
+<head>
+<title>to do list</title>
+<style>
+li
+{
+	padding-left:10px;
+	padding-right:30px;
+	padding-bottom:10px;
+	margin-left:10px;
+}
+ol li
+{
+	background-color:#e6ffff;
+
+}
+ol li:nth-child(even)
+{
+	background-color:#ccffff;
+}
+#bdy
+{
+	background-color:#f5f5ef;
+}
+</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$("#button").click(function(){
+			var item=$('input[name=todo]').val();
+			$('ol').append('<li>'+item+'<button id="del" style="float:right;background-color:#ecc6d9;">del</button>'+'</li>');
+		});
+		$('input').focus(function() {
+        $(this).val('');
+        });
+        
+       $(document).on('click','#del', function(){
+        $(this).closest('li').remove();    
+      });
+   
+      $('#ol').sortable();  
+      
+    }
+);
+</script>
+</head>
+<body id="bdy">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-0 col-sm-4">
+		    </div>
+			<div class="col-xs-12 col-sm-4">
+				<h2><u>TO-DO LIST</u></h2><br>
+			</div>
+			<div class="col-xs-0 col-sm-4">
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-0 col-sm-4">
+		    </div>
+			<div class="col-xs-12 col-sm-4">
+				click on add button to add and del button to delete!<br><br>
+			</div>
+			<div class="col-xs-0 col-sm-4">
+		    </div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-0 col-sm-4">
+		    </div>
+			<div class="col-xs-12 col-sm-4">
+				<table>
+				<form>
+					<tr><td><input type="text" id="text" name="todo" placeholder="enter item"></td>
+				</form><td><button id="button">ADD</button></td></tr>
+					<br></table><br>
+				<ol>
+				</ol>
+			</div>
+			<div class="col-xs-0 col-sm-4">
+			</div>
+		</div>
+	</div>
+</body>
+</html>
